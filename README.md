@@ -1,2 +1,2 @@
-# unit-test-student-service
-tentu saja tugas Lumoshive Bootcamp Golang lagi
+# implem-unit-test-go
+this repo implementation unit test golang

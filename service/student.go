@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"session-9/model"
 	"session-9/repository"
 	"session-9/utils"
@@ -25,7 +26,7 @@ func NewStudentService(repo repository.StudentRepositoryInterface) *StudentServi
 
 // GetAll returns all students
 func (s *StudentService) GetAll() ([]model.Student, error) {
-	return s.repo.GetAll()
+		return s.repo.GetAll()
 }
 
 // GetByID returns a student by id
@@ -33,6 +34,8 @@ func (s *StudentService) GetByID(id int) (*model.Student, error) {
 	students, err := s.repo.GetAll()
 	if err != nil {
 		return nil, err
+	}else{
+		fmt.Println("Student Fetched Successfully")
 	}
 
 	for _, st := range students {
