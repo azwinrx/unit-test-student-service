@@ -183,6 +183,10 @@ func TestStudentService_GetByID_FileError(t *testing.T) {
 	}
 }
 
+/*
+    MY TASK START FROM HERE
+*/
+
 func TestStudentService_Create_Success(t *testing.T) {
 
 	svc, repo := newTestService()
@@ -219,12 +223,12 @@ func TestStudentService_Update_Success(t *testing.T) {
     svc, repo := newTestService()
 
     existingData := []model.Student{
-        {ID: 1, Name: "Andi", Age: 21},
-        {ID: 2, Name: "Siti", Age: 22},
+        {ID: 1, Name: "Jane Margolis", Age: 21},
+        {ID: 2, Name: "Azwin", Age: 22},
     }
 
     updatedInput := model.Student{
-        Name: "Siti Updated",
+        Name: "Azwin Updated",
         Age:  25,
     }
 
@@ -234,14 +238,14 @@ func TestStudentService_Update_Success(t *testing.T) {
             return false
         }
         // Validasi student dengan ID 2 sudah diupdate
-        return students[1].ID == 2 && students[1].Name == "Siti Updated" && students[1].Age == 25
+        return students[1].ID == 2 && students[1].Name == "Azwin Updated" && students[1].Age == 25
     })).Return(nil)
 
     updated, err := svc.Update(2, updatedInput)
 
     assert.Nil(t, err)
     assert.Equal(t, 2, updated.ID)
-    assert.Equal(t, "Siti Updated", updated.Name)
+    assert.Equal(t, "Azwin Updated", updated.Name)
     assert.Equal(t, 25, updated.Age)
 
     repo.AssertExpectations(t)
@@ -251,8 +255,8 @@ func TestStudentService_Update_NotFound(t *testing.T) {
     svc, repo := newTestService()
 
     existingData := []model.Student{
-        {ID: 1, Name: "Andi", Age: 21},
-        {ID: 2, Name: "Siti", Age: 22},
+        {ID: 1, Name: "Jane Margolis", Age: 21},
+        {ID: 2, Name: "Azwin", Age: 22},
     }
 
     updatedInput := model.Student{
@@ -292,11 +296,11 @@ func TestStudentService_Update_SaveAllError(t *testing.T) {
     svc, repo := newTestService()
 
     existingData := []model.Student{
-        {ID: 1, Name: "Andi", Age: 21},
+        {ID: 1, Name: "Azwin", Age: 21},
     }
 
     updatedInput := model.Student{
-        Name: "Andi Updated",
+        Name: "Azwin Updated",
         Age:  22,
     }
 
